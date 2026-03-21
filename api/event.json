@@ -1,0 +1,25 @@
+{
+  "event": [
+    {
+      "title": "IPL 2026 Live",
+      "poster_link": "https://matchdekho.in/image/api/crickettv.png",
+      "league": "IPL",
+      "category": "Cricket",
+      "language": "Hindi",
+      "start_time": "7:30 PM",
+      "date": "22 Mar 2026",
+      "watch_now": [
+        {
+          "id": "https://crickettv.site/stream1",
+          "name": "Server 1 - HD",
+          "quality": "1080p"
+        },
+        {
+          "id": "https://crickettv.site/stream2",
+          "name": "Server 2 - SD",
+          "quality": "720p"
+        }
+      ]
+    }
+  ]
+}

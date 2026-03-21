@@ -2372,7 +2372,7 @@ function loadEventData() {
   
   isLoading = true;
   
-  return fetch('https://allrounderlive.in/api/event.json')
+  return fetch('https://matchdekho.in/api/event.json')
     .then(r => r.json())
     .then(data => {
       eventDataCache = data.event;
@@ -2673,7 +2673,7 @@ async function loadTodayEvents() {
     const todayContainer = document.getElementById('todayEvents');
     
     // Fetch today events from the dedicated JSON file
-    const response = await fetch('https://allrounderlive.in/api/today-events.json');
+    const response = await fetch('https://matchdekho.in/api/today-events.json');
     const data = await response.json();
     
     // Clear skeleton loaders
@@ -2805,7 +2805,7 @@ async function loadUpcomingMatches() {
     const upcomingContainer = document.getElementById('upcomingMatches');
     
     // Fetch from the upcoming JSON URL from final fixed.html
-    const response = await fetch('https://allrounderlive.in/api/upcomingevnets.json');
+    const response = await fetch('https://matchdekho.in/api/upcomingevnets.json');
     const data = await response.json();
     
     // Clear skeleton loaders
@@ -3191,7 +3191,7 @@ async function loadSonyLivChannels() {
     container.innerHTML = '';
     
     // Fetch Sony LIV data
-    const response = await fetch('https://allrounderlive.in/api/sonyliv.json');
+    const response = await fetch('https://matchdekho.in/api/sonyliv.json');
     const data = await response.json();
     
     if (!data.channels || data.channels.length === 0) {
@@ -3296,7 +3296,7 @@ async function loadWPLSection() {
     console.log('Loading WPL section...');
     
     // Fetch WPL data
-    const response = await fetch('https://allrounderlive.in/api/wpl.json');
+    const response = await fetch('https://matchdekho.in/api/wpl.json');
     const data = await response.json();
     
     // Clear skeleton loaders
@@ -3454,7 +3454,7 @@ async function loadSkyNZChannels() {
     container.innerHTML = '';
     
     // Fetch Sky NZ data
-    const response = await fetch('https://allrounderlive.in/api/sky-nz.json');
+    const response = await fetch('https://matchdekho.in/api/sky-nz.json');
     const data = await response.json();
     
     if (!data || data.length === 0) {

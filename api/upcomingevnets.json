@@ -1,0 +1,22 @@
+{
+  "upcomingMatches": [
+    {
+      "title": "IPL 2026 - Match 1",
+      "team1": "CSK",
+      "team2": "MI",
+      "date": "25 Mar 2026",
+      "time": "7:30 PM",
+      "venue": "M.A. Chidambaram Stadium, Chennai",
+      "poster": "https://matchdekho.in/image/api/crickettv.png"
+    },
+    {
+      "title": "IPL 2026 - Match 2",
+      "team1": "RCB",
+      "team2": "KKR",
+      "date": "26 Mar 2026",
+      "time": "3:30 PM",
+      "venue": "M. Chinnaswamy Stadium, Bangalore",
+      "poster": "https://matchdekho.in/image/api/crickettv.png"
+    }
+  ]
+}

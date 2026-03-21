@@ -1,0 +1,24 @@
+{
+  "channels": [
+    {
+      "name": "Sony Sports Ten 1",
+      "logo": "https://matchdekho.in/image/api/crickettv.png",
+      "stream": "sony-ten-1"
+    },
+    {
+      "name": "Sony Sports Ten 2",
+      "logo": "https://matchdekho.in/image/api/crickettv.png",
+      "stream": "sony-ten-2"
+    },
+    {
+      "name": "Sony Sports Ten 3",
+      "logo": "https://matchdekho.in/image/api/crickettv.png",
+      "stream": "sony-ten-3"
+    },
+    {
+      "name": "Sony LIV HD",
+      "logo": "https://matchdekho.in/image/api/crickettv.png",
+      "stream": "sony-liv-hd"
+    }
+  ]
+}
