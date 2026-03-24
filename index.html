@@ -1761,6 +1761,17 @@ body {
 .menu-overlay.active {
   display: block;
 }
+.menu-section-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(163, 255, 0, 0.7);
+  padding: 16px 20px 6px 20px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin-top: 8px;
+  font-family: 'Arial', sans-serif;
+}
 .header-left {
   position: absolute;
   left: 15px;
@@ -3407,10 +3418,17 @@ setTimeout(loadSkyNZChannels, 3500);
     <button onclick="closeMenu()">✕</button>
   </div>
 
-  <a href="/" onclick="closeMenu()">Home</a>
-  <a href="#today-events-section" onclick="closeMenu()">Today Events</a>
-  <a href="#upcoming-section" onclick="closeMenu()">Upcoming</a>
-  <a href="#highlights-section" onclick="closeMenu()">Highlights</a>
+  <a href="/" onclick="closeMenu()">🏠 Home</a>
+  <a href="#today-events-section" onclick="closeMenu()">📅 Today Events</a>
+  <a href="#upcoming-section" onclick="closeMenu()">🗓️ Upcoming</a>
+  <a href="#highlights-section" onclick="closeMenu()">🎬 Highlights</a>
+
+  <div class="menu-section-label">Information</div>
+  <a href="/about.html" onclick="closeMenu()">👥 About Us</a>
+  <a href="/terms.html" onclick="closeMenu()">📄 Terms & Conditions</a>
+  <a href="/privacy.html" onclick="closeMenu()">🔒 Privacy Policy</a>
+  <a href="/disclaimer.html" onclick="closeMenu()">⚠️ Disclaimer</a>
+  <a href="/contact.html" onclick="closeMenu()">📧 Contact Us</a>
 </div>
 
 <div id="menuOverlay" class="menu-overlay" onclick="closeMenu()"></div>
