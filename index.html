@@ -1896,67 +1896,100 @@ body {
 
 <!-- Telegram Join Banner -->
 <div style="
-  background: linear-gradient(135deg, #0f2862 0%, #1a3a8a 40%, #0d1f4e 100%);
-  border-top: 2px solid rgba(163,255,0,0.25);
-  border-bottom: 2px solid rgba(163,255,0,0.25);
-  padding: clamp(28px, 5vw, 40px) clamp(20px, 5vw, 40px);
-  text-align: center;
+  padding: clamp(28px, 5vw, 48px) clamp(16px, 4vw, 30px);
+  background: linear-gradient(135deg, #06103a 0%, #0c1e5a 60%, #06103a 100%);
   position: relative;
   overflow: hidden;
 ">
-  <!-- Background glow -->
-  <div style="position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:300px;height:200px;background:radial-gradient(circle,rgba(163,255,0,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+  <!-- Ambient glow blobs -->
+  <div style="position:absolute;top:-60px;left:25%;width:280px;height:280px;background:radial-gradient(circle,rgba(0,140,255,0.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;bottom:-60px;right:20%;width:220px;height:220px;background:radial-gradient(circle,rgba(163,255,0,0.10) 0%,transparent 70%);pointer-events:none;"></div>
 
-  <!-- Telegram icon -->
-  <div style="font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 10px;">✈️</div>
+  <!-- Liquid Glass Card -->
+  <div style="
+    max-width: 560px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 24px;
+    padding: clamp(24px, 4vw, 36px) clamp(20px, 4vw, 36px);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    box-shadow:
+      0 8px 32px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.12),
+      0 0 0 1px rgba(255,255,255,0.05);
+    text-align: center;
+    position: relative;
+  ">
+    <!-- Inner top gloss highlight -->
+    <div style="position:absolute;top:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);border-radius:50%;"></div>
 
-  <!-- Heading -->
-  <h2 style="
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(1.3rem, 4vw, 2rem);
-    font-weight: 800;
-    color: #ffffff;
-    margin: 0 0 6px 0;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  ">Join <span style="color:#a3ff00;">MatchDekho</span> on Telegram</h2>
+    <!-- Telegram SVG Icon -->
+    <div style="margin-bottom:14px;">
+      <svg width="52" height="52" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="24" fill="url(#tgGrad)"/>
+        <defs>
+          <linearGradient id="tgGrad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2AABEE"/>
+            <stop offset="1" stop-color="#229ED9"/>
+          </linearGradient>
+        </defs>
+        <path d="M10.5 23.5L34 14L30 35.5L20.5 28.5L27 22L17 27.5L10.5 23.5Z" fill="white" opacity="0.9"/>
+        <path d="M17 27.5L19.5 35L22.5 30L30 35.5" fill="white" opacity="0.7"/>
+      </svg>
+    </div>
 
-  <!-- Subtext -->
-  <p style="
-    color: rgba(255,255,255,0.75);
-    font-family: 'Montserrat', sans-serif;
-    font-size: clamp(0.8rem, 2vw, 0.95rem);
-    margin: 0 auto 22px auto;
-    max-width: 500px;
-    line-height: 1.6;
-  ">Get instant match alerts, free streaming links & exclusive updates. Never miss a live match again! 🏏</p>
+    <!-- Heading -->
+    <h2 style="
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.2rem, 3.5vw, 1.8rem);
+      font-weight: 800;
+      color: #fff;
+      margin: 0 0 8px 0;
+      letter-spacing: 0.5px;
+    ">Join <span style="color:#a3ff00;">MatchDekho</span> on Telegram</h2>
 
-  <!-- Join Button -->
-  <a href="https://t.me/matchdekho" target="_blank" style="
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: #a3ff00;
-    color: #000;
-    text-decoration: none;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 800;
-    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-    padding: clamp(12px, 2.5vw, 15px) clamp(24px, 5vw, 36px);
-    border-radius: 50px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    box-shadow: 0 4px 20px rgba(163,255,0,0.3);
-    transition: all 0.2s ease;
-  "
-  onmouseover="this.style.background='#b8ff33';this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 28px rgba(163,255,0,0.5)'"
-  onmouseout="this.style.background='#a3ff00';this.style.transform='scale(1)';this.style.boxShadow='0 4px 20px rgba(163,255,0,0.3)'"
-  >
-    ✈️ Join Telegram Channel
-  </a>
+    <!-- Subtext -->
+    <p style="
+      color: rgba(255,255,255,0.7);
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.78rem, 1.8vw, 0.9rem);
+      margin: 0 auto 20px auto;
+      line-height: 1.65;
+    ">Get instant match alerts, free streaming links &amp; exclusive updates.<br>Never miss a live match again! 🏏</p>
 
-  <!-- Members count visual -->
-  <p style="color:rgba(255,255,255,0.4); font-size:0.75rem; margin-top:14px; font-family:'Arial',sans-serif;">Free to join • No spam • Cricket only 🏏</p>
+    <!-- Join Button -->
+    <a href="https://t.me/matchdekho" target="_blank" style="
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #2AABEE, #229ED9);
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(0.85rem, 2.2vw, 1rem);
+      padding: 13px 30px;
+      border-radius: 50px;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 18px rgba(42,171,238,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    "
+    onmouseover="this.style.transform='scale(1.05)';this.style.boxShadow='0 6px 26px rgba(42,171,238,0.6),inset 0 1px 0 rgba(255,255,255,0.2)'"
+    onmouseout="this.style.transform='scale(1)';this.style.boxShadow='0 4px 18px rgba(42,171,238,0.4),inset 0 1px 0 rgba(255,255,255,0.2)'"
+    >
+      <svg width="18" height="18" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0">
+        <path d="M10.5 23.5L34 14L30 35.5L20.5 28.5L27 22L17 27.5L10.5 23.5Z" fill="white"/>
+        <path d="M17 27.5L19.5 35L22.5 30L30 35.5" fill="white" opacity="0.7"/>
+      </svg>
+      Join Telegram Channel
+    </a>
+
+    <p style="color:rgba(255,255,255,0.35); font-size:0.72rem; margin-top:12px; font-family:'Arial',sans-serif;">Free to join • No spam • Cricket only 🏏</p>
+  </div>
 </div>
 
 
