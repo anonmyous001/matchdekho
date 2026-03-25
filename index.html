@@ -1833,6 +1833,7 @@ body {
 <div class="main-container">
 
 
+
   <!-- Today Events Section -->
   <section id="today-events-section" class="lazy-section">
     <h2>Today Events</h2>
@@ -2441,6 +2442,7 @@ document.addEventListener('click', function(e) {
   }
 }, true);
 
+
 // Load World Sports Channels - DIRECT REDIRECTION
 async function loadWorldSportsChannels() {
   try {
@@ -2667,8 +2669,8 @@ async function loadUpcomingMatches() {
   try {
     const upcomingContainer = document.getElementById('upcomingMatches');
     
-    // Fetch from the upcoming JSON URL from final fixed.html
-    const response = await fetch('https://matchdekho.in/api/upcomingevnets.json');
+    // Fetch from the upcoming JSON URL locally
+    const response = await fetch('api/upcomingevnets.json');
     const data = await response.json();
     
     // Clear skeleton loaders
