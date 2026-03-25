@@ -166,6 +166,85 @@
   --card-large-width: 280px;
   --gap-size: 15px;
   }
+
+/* ==================== UNIVERSAL GLOW HOVER EFFECT ==================== */
+
+/* Cards: Today Events, Upcoming Matches, World Sports, Highlights */
+.today-event-card,
+.upcoming-card,
+.world-sports-card,
+.highlight-card,
+.sky-nz-card {
+  transition: all 0.3s ease;
+}
+
+.today-event-card:hover,
+.upcoming-card:hover,
+.world-sports-card:hover,
+.highlight-card:hover,
+.sky-nz-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 20px rgba(163, 255, 0, 0.4), 0 0 40px rgba(163, 255, 0, 0.15), 0 8px 25px rgba(0,0,0,0.5);
+  border-color: rgba(163, 255, 0, 0.4);
+}
+
+/* Buttons: Watch Now, Footer, Quick Access */
+.watch-btn:hover,
+.footer-btn:hover {
+  box-shadow: 0 0 18px rgba(163, 255, 0, 0.6), 0 0 35px rgba(163, 255, 0, 0.2);
+}
+
+/* Side Menu Links */
+.side-menu a {
+  transition: all 0.25s ease;
+  position: relative;
+}
+
+.side-menu a:hover {
+  color: #a3ff00;
+  text-shadow: 0 0 10px rgba(163, 255, 0, 0.5), 0 0 20px rgba(163, 255, 0, 0.2);
+  padding-left: 8px;
+}
+
+/* Slider nav arrows */
+.slide-btn {
+  transition: all 0.25s ease !important;
+}
+
+.slide-btn:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.4), 0 0 30px rgba(255, 255, 255, 0.15) !important;
+  transform: scale(1.15);
+}
+
+/* Quick Access Section Buttons */
+.quick-access-btn,
+a[href="#todayEventsSection"],
+a[href="#upcomingSection"],
+a[href="#highlightsSection"] {
+  transition: all 0.25s ease;
+}
+
+.quick-access-btn:hover,
+a[href="#todayEventsSection"]:hover,
+a[href="#upcomingSection"]:hover,
+a[href="#highlightsSection"]:hover {
+  box-shadow: 0 0 15px rgba(163, 255, 0, 0.4), 0 0 30px rgba(163, 255, 0, 0.15);
+  transform: scale(1.06);
+}
+
+/* Navbar hamburger menu button */
+.menu-btn:hover,
+.menu-header button:hover {
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+  transform: scale(1.15);
+  transition: all 0.2s ease;
+}
+
+/* Telegram Join Banner CTA */
+a[href="https://t.me/matchdekh0"]:hover {
+  box-shadow: 0 0 20px rgba(42, 171, 238, 0.6), 0 0 40px rgba(42, 171, 238, 0.2) !important;
+}
+
 /* ==================== FONT OVERRIDE SYSTEM ==================== */
 
 /* Default font for entire site */
