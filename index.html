@@ -2656,10 +2656,7 @@ function startTodayEventsAutoScroll() {
 
 // Load today events after page loads
 window.addEventListener('load', () => {
-  // Wait for main posters to load, then load today events from dedicated JSON
-  setTimeout(() => {
-    loadTodayEvents();
-  }, 2000);
+  loadTodayEvents();
 });
 
 // ==================== END UPDATED TODAY EVENTS ====================
@@ -2793,10 +2790,7 @@ function startUpcomingAutoScroll() {
 
 // Load upcoming matches after page loads
 window.addEventListener('load', () => {
-  // Wait for other sections to load, then load upcoming matches
-  setTimeout(() => {
-    loadUpcomingMatches();
-  }, 2500);
+  loadUpcomingMatches();
 });
 
 // NEW CODE FOR HIGHLIGHTS NEW SECTION ONLY - LOAD ONLY 50 ITEMS
@@ -2848,9 +2842,9 @@ async function loadHighlightsNewSection() {
 }
 
 // Load Highlights New section
-setTimeout(() => {
+window.addEventListener('load', () => {
   loadHighlightsNewSection();
-}, 4000);
+});
 
 // NEW CODE FOR HIGHLIGHTS SECTION ONLY (from final fixed)
 async function loadHighlightsSection() {
@@ -2913,13 +2907,10 @@ async function loadHighlightsSection() {
 }
 
 // Load Highlights section
-setTimeout(() => {
+window.addEventListener('load', () => {
   loadHighlightsSection();
-}, 4500);
-  // Load WPL section
-setTimeout(() => {
   loadWPLSection();
-}, 5000);
+});
 
 // Load Fancode Live Matches
 async function loadFancodeMatches() {
@@ -3000,9 +2991,7 @@ async function loadFancodeMatches() {
 
 // Load Fancode section after page loads
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    loadFancodeMatches();
-  }, 3500);
+  loadFancodeMatches();
 });
 
 // Footer Button Functionality with Material Icons
@@ -3148,9 +3137,7 @@ function startSonyLivAutoScroll() {
 
 // Call the function after page loads
 window.addEventListener('load', () => {
-  setTimeout(() => {
-    loadSonyLivChannels();
-  }, 3000);
+  loadSonyLivChannels();
 });
 
   // Load WPL Section
