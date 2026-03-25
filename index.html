@@ -1832,6 +1832,22 @@ body {
 <!-- ALL OTHER CONTENT IN CONTAINER -->
 <div class="main-container">
 
+  <!-- Live Scores Section -->
+  <section id="scoreboard-section" class="lazy-section">
+    <h2>🏏 Live Scores</h2>
+    <div class="seo-text">
+      <h3>Live Cricket Scores</h3>
+      <p>Get real-time cricket scores, match updates, and results from international and domestic matches worldwide.</p>
+    </div>
+    <div class="scroll-container" id="matches">
+      <!-- Skeleton loaders -->
+      <div class="match-card" style="min-height:160px;"><div class="match-skeleton"><div></div><div></div></div></div>
+      <div class="match-card" style="min-height:160px;"><div class="match-skeleton"><div></div><div></div></div></div>
+      <div class="match-card" style="min-height:160px;"><div class="match-skeleton"><div></div><div></div></div></div>
+      <div class="match-card" style="min-height:160px;"><div class="match-skeleton"><div></div><div></div></div></div>
+    </div>
+  </section>
+
 
   <!-- Today Events Section -->
   <section id="today-events-section" class="lazy-section">
@@ -2036,6 +2052,9 @@ body {
         QUICK ACCESS SECTIONS
       </h3>
       <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;">
+        <button class="footer-btn" data-section="scoreboard-section">
+          Live Scores
+        </button>
         <button class="footer-btn" data-section="today-events-section">
           Today Events
         </button>
@@ -2441,17 +2460,20 @@ document.addEventListener('click', function(e) {
   }
 }, true);
 
-// Fetch and render live matches
+// Fetch and render live matches from Cricbuzz API
 async function loadLiveMatches() {
   try {
     const res = await fetch('https://crictv.cricketstream745.workers.dev/?url=https://m.cricbuzz.com/api/home');
     const data = await res.json();
     
-    // Remove skeleton loaders
     const container = document.getElementById('matches');
     container.innerHTML = '';
     
-    // Render match cards
+    if (!data.matches || data.matches.length === 0) {
+      container.innerHTML = '<p style="color:#ccc; text-align:center; padding:20px; width:100%; font-family:Arial,sans-serif;">No matches available right now</p>';
+      return;
+    }
+    
     data.matches.forEach(item => {
       const matchInfo = item.match.matchInfo;
       const score = item.match.matchScore || {};
@@ -2460,73 +2482,85 @@ async function loadLiveMatches() {
       matchCard.className = 'match-card';
       
       // Format scores
-      let team1Score = "Yet to Bat";
-      let team2Score = "Yet to Bat";
+      let team1Score = '';
+      let team2Score = '';
       
-      if (score.team1Score) {
-        team1Score = `${score.team1Score.inngs1?.runs || 0}/${score.team1Score.inngs1?.wickets || 0} (${score.team1Score.inngs1?.overs || 0} ov)`;
+      if (score.team1Score && score.team1Score.inngs1) {
+        const inn = score.team1Score.inngs1;
+        team1Score = `${inn.runs}/${inn.wickets} (${inn.overs} ov)`;
       }
-      
-      if (score.team2Score) {
-        team2Score = `${score.team2Score.inngs1?.runs || 0}/${score.team2Score.inngs1?.wickets || 0} (${score.team2Score.inngs1?.overs || 0} ov)`;
+      if (score.team2Score && score.team2Score.inngs1) {
+        const inn = score.team2Score.inngs1;
+        team2Score = `${inn.runs}/${inn.wickets} (${inn.overs} ov)`;
       }
       
       // Determine status
-      let statusClass = "upcoming";
-      let statusText = matchInfo.stateTitle;
-      if (matchInfo.state === "In Progress") {
-        statusClass = "live";
-        statusText = "LIVE NOW";
-      } else if (matchInfo.state === "Complete") {
-        statusClass = "ended";
-        statusText = "ENDED";
+      let statusClass = 'upcoming';
+      let statusText = matchInfo.status || matchInfo.stateTitle || 'Upcoming';
+      if (matchInfo.state === 'In Progress') {
+        statusClass = 'live';
+        statusText = '● LIVE';
+      } else if (matchInfo.state === 'Complete') {
+        statusClass = 'ended';
+        statusText = matchInfo.status || 'Completed';
+      } else if (matchInfo.state === 'Preview') {
+        statusClass = 'upcoming';
+        statusText = matchInfo.status || 'Upcoming';
       }
+      
+      // Team logo URL from Cricbuzz
+      const team1Img = `https://static.cricbuzz.com/a/img/v1/100x77/i1/c${matchInfo.team1.imageId}/${matchInfo.team1.teamSName}.jpg`;
+      const team2Img = `https://static.cricbuzz.com/a/img/v1/100x77/i1/c${matchInfo.team2.imageId}/${matchInfo.team2.teamSName}.jpg`;
       
       matchCard.innerHTML = `
         <div class="match-header">
-          <div><strong>${matchInfo.seriesName}</strong></div>
-          <div>${matchInfo.matchDesc}</div>
+          <strong>${matchInfo.seriesName}</strong>
+          <div>${matchInfo.matchDesc} • ${matchInfo.matchFormat}</div>
           <div class="status ${statusClass}">${statusText}</div>
         </div>
         <div class="teams">
           <div class="team">
-            <img src="https://static.cricbuzz.com/a/img/v1/200x150/i1/c${matchInfo.team1.imageId}/${matchInfo.team1.teamName}.jpg" alt="${matchInfo.team1.teamSName}">
+            <img src="${team1Img}" alt="${matchInfo.team1.teamSName}" onerror="this.style.display='none'">
             <div class="team-name">${matchInfo.team1.teamSName}</div>
-            <div class="team-score">${team1Score}</div>
+            <div class="team-score">${team1Score || 'Yet to bat'}</div>
           </div>
           <div class="team">
-            <img src="https://static.cricbuzz.com/a/img/v1/200x150/i1/c${matchInfo.team2.imageId}/${matchInfo.team2.teamName}.jpg" alt="${matchInfo.team2.teamSName}">
+            <img src="${team2Img}" alt="${matchInfo.team2.teamSName}" onerror="this.style.display='none'">
             <div class="team-name">${matchInfo.team2.teamSName}</div>
-            <div class="team-score">${team2Score}</div>
+            <div class="team-score">${team2Score || 'Yet to bat'}</div>
           </div>
         </div>
       `;
       
+      // Venue info tooltip
+      if (matchInfo.venueInfo) {
+        matchCard.title = `${matchInfo.venueInfo.ground}, ${matchInfo.venueInfo.city}`;
+      }
+      
       container.appendChild(matchCard);
     });
     
-    // Start auto-scroll
     startMatchAutoScroll();
     
   } catch (error) {
     console.error('Error loading matches:', error);
     const container = document.getElementById('matches');
-    container.innerHTML = '<p style="color:#ccc; text-align:center; padding:20px; width:100%;">Unable to load live scores</p>';
+    if (container) {
+      container.innerHTML = '<p style="color:#ccc; text-align:center; padding:20px; width:100%; font-family:Arial,sans-serif;">Unable to load live scores</p>';
+    }
   }
 }
 
 // Auto-scroll matches
 function startMatchAutoScroll() {
   const container = document.getElementById('matches');
-  if (!container.children.length) return;
+  if (!container || !container.children.length) return;
   
-  let scrollInterval;
   let userScrolling = false;
   
   function scrollToNext() {
     if (userScrolling) return;
-    
-    const cardWidth = 280 + 15; // width + gap
+    const cardWidth = 280 + 15;
     if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
       container.scrollTo({ left: 0, behavior: 'smooth' });
     } else {
@@ -2534,21 +2568,22 @@ function startMatchAutoScroll() {
     }
   }
   
-  scrollInterval = setInterval(scrollToNext, 8000);
+  setInterval(scrollToNext, 8000);
   
   container.addEventListener('scroll', () => {
     userScrolling = true;
-    clearTimeout(window.scrollTimeout);
-    window.scrollTimeout = setTimeout(() => {
+    clearTimeout(window.matchScrollTimeout);
+    window.matchScrollTimeout = setTimeout(() => {
       userScrolling = false;
     }, 3000);
   });
 }
 
-// Load matches after poster loads
+// Load matches and auto-refresh every 60 seconds
 window.addEventListener('load', () => {
-  // Wait a bit for poster to load, then load matches
-  setTimeout(loadLiveMatches, 1500);
+  setTimeout(loadLiveMatches, 1000);
+  // Auto-refresh scores every 60 seconds
+  setInterval(loadLiveMatches, 60000);
 });
 // Load World Sports Channels - DIRECT REDIRECTION
 async function loadWorldSportsChannels() {
