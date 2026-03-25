@@ -675,24 +675,17 @@ section h2 {
 }
 /* ==================== TODAY EVENTS ==================== */
 .today-event-card {
-  flex: 0 0 100%;
-  min-width: 100%;
+  flex: 0 0 min(260px, 28vw);
+  min-width: 220px;
   aspect-ratio: 16/9;
-  max-height: 500px;
   background: linear-gradient(135deg, #071b4f 0%, #00013a 100%);
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.7);
   border: 1px solid rgba(255,255,255,0.1);
   position: relative;
   cursor: pointer;
   scroll-snap-align: center;
   overflow: hidden;
-}
-
-@media (min-width: 768px) {
-  .today-event-card {
-    aspect-ratio: 21/9;
-  }
 }
 
 .today-event-card img {
@@ -729,12 +722,13 @@ section h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  height: 60%;
+  height: 40%;
   background: linear-gradient(
     to top,
-    rgba(0, 0, 0, 0.9) 0%,
-    rgba(0, 0, 0, 0.6) 50%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 1, 58, 1.0) 0%,
+    rgba(7, 27, 79, 0.7) 40%,
+    rgba(7, 27, 79, 0.4) 65%,
+    rgba(7, 27, 79, 0) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -744,33 +738,31 @@ section h2 {
 /* Event info text */
 .event-info {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
-  right: 20px;
+  bottom: 10px;
+  left: 15px;
+  right: 15px;
   z-index: 2;
   color: white;
   font-family: 'Arial', sans-serif;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
 }
 
 .event-title {
-  font-size: clamp(1.2rem, 3vw, 2.5rem);
-  font-weight: 800;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+  font-weight: bold;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .event-meta {
-  font-size: clamp(0.9rem, 1.5vw, 1.2rem);
-  color: rgba(255,255,255,0.9);
+  font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+  color: #bbb;
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-weight: bold;
+  gap: 8px;
 }
 
 /* ==================== UPCOMING MATCHES ==================== */
