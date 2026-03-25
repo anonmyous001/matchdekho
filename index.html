@@ -3373,5 +3373,71 @@ function closeMenu() {
 }
 </script>
 
+<!-- Floating Telegram Button -->
+<a href="https://t.me/matchdekh0" target="_blank" id="telegramFab" style="
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #0088cc 0%, #00aaee 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border: 2px solid rgba(255,255,255,0.2);
+  animation: telegramPulse 2s infinite;
+">
+  <svg width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10.5 23.5L34 14L30 35.5L20.5 28.5L27 22L17 27.5L10.5 23.5Z" fill="white"/>
+    <path d="M17 27.5L19.5 35L22.5 30L30 35.5" fill="white" opacity="0.7"/>
+  </svg>
+</a>
+
+<!-- Telegram Tooltip -->
+<div id="telegramTooltip" style="
+  position: fixed;
+  bottom: 28px;
+  right: 86px;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-family: 'Arial', sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  white-space: nowrap;
+  z-index: 1001;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+">💬 Chat on Telegram</div>
+
+<style>
+@keyframes telegramPulse {
+  0% { box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5); }
+  50% { box-shadow: 0 4px 25px rgba(0, 136, 204, 0.8), 0 0 0 8px rgba(0, 136, 204, 0.15); }
+  100% { box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5); }
+}
+</style>
+
+<script>
+const tgFab = document.getElementById('telegramFab');
+const tgTip = document.getElementById('telegramTooltip');
+tgFab.addEventListener('mouseenter', () => {
+  tgFab.style.transform = 'scale(1.15)';
+  tgTip.style.opacity = '1';
+});
+tgFab.addEventListener('mouseleave', () => {
+  tgFab.style.transform = 'scale(1)';
+  tgTip.style.opacity = '0';
+});
+</script>
+
 </body>
 </html>
